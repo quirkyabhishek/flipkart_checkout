@@ -16,5 +16,8 @@ export class home_page {
         const placeholder = await this.check.getSearchBoxLabel()
         expect(placeholder).toEqual("Search for products, brands and more","Search Box Missing")
     }
+    public async clickSubmitonSearch(){
+        await this.action.clickSubmitButton()
+    }
 
 }

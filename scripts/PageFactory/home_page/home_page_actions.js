@@ -17,6 +17,11 @@ class home_page_actions {
             console.log("Entered Text in Search Box");
         });
     }
+    clickSubmitButton() {
+        return __awaiter(this, void 0, void 0, function* () {
+            yield protractor_1.element(locators.LOC_SubmitButton).click();
+        });
+    }
 }
 exports.home_page_actions = home_page_actions;
 //# sourceMappingURL=home_page_actions.js.map

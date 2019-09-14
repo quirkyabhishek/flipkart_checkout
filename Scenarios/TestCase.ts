@@ -19,10 +19,11 @@ describe("Add To Cart", async () => {
         const enter = new home_page()
         await enter.verifySearchBoxPlace()
         await enter.enterSearchTextonHMPG()
+        await enter.clickSubmitonSearch()
     })
-    it("Press Enter Key", async()=>{
-        await browser.actions().sendKeys(protractor.Key.ENTER).perform();
-    })
+/*    it("Press Enter Key", async()=>{
+        await browser.actions().sendKeys(protractor.Key.RETURN).perform();
+    })*/
     it("Verify the searched item", async()=>{
         const search = new search_result()
         await search.verifySearchText()

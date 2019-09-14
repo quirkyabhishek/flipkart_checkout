@@ -22,6 +22,21 @@ class product_page {
             return yield wait_util_1.wait_util.waitForElementVisible(locators.LOC_SizeSelector, timeout);
         });
     }
+    waitForProductNameToDisplay(timeout) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield wait_util_1.wait_util.waitForElementVisible(locators.LOC_ProductName, timeout);
+        });
+    }
+    waitForBuyButtonToDisplay(timeout) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield wait_util_1.wait_util.waitForElementVisible(locators.LOC_BuyNowButton, timeout);
+        });
+    }
+    waitForLoginPageToDisplay(timeout) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield wait_util_1.wait_util.waitForElementVisible(locators.LOC_LoginPageHeader, timeout);
+        });
+    }
     selectShoeSize() {
         return __awaiter(this, void 0, void 0, function* () {
             yield this.waitForSizesToDisplay(3000);
@@ -30,20 +45,23 @@ class product_page {
     }
     clickBuyNow() {
         return __awaiter(this, void 0, void 0, function* () {
+            yield this.waitForBuyButtonToDisplay(3000);
             yield this.action.clickBuy();
         });
     }
     verifyProductBrand() {
         return __awaiter(this, void 0, void 0, function* () {
+            yield this.waitForProductNameToDisplay(3000);
             const filters = yield this.check.getProductName();
-            expect(filters).toContain("REEBOK", "Applied Filters Didn't Match");
+            expect(filters).toContain("REEBOK", "Selected Product is not the same");
             console.log("Brand Matched");
         });
     }
     verifyLoginHeader() {
         return __awaiter(this, void 0, void 0, function* () {
+            yield this.waitForLoginPageToDisplay(3000);
             const headName = yield this.check.getLoginPageHeader();
-            expect(headName).toContain("LOGIN OR SIGNUP", "Applied Filters Didn't Match");
+            expect(headName).toContain("LOGIN OR SIGNUP", "Login page not displayed");
             console.log("Login Page Header Matched");
         });
     }

@@ -6,5 +6,8 @@ export class home_page_actions{
         await element(locators.LOC_SearchBox).sendKeys(searchtext);
         console.log("Entered Text in Search Box");
     }
+    public async clickSubmitButton(){
+        await element(locators.LOC_SubmitButton).click();
+    }
 
 }

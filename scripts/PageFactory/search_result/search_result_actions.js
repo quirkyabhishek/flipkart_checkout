@@ -11,12 +11,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const protractor_1 = require("protractor");
 const locators = require("./search_result_locators");
 class search_result_actions {
-    selectBrand() {
-        return __awaiter(this, void 0, void 0, function* () {
-            yield protractor_1.element(locators.LOC_BrandCheckbox).click();
-            console.log("After Selecting Brand");
-        });
-    }
     clickDropdown() {
         return __awaiter(this, void 0, void 0, function* () {
             yield protractor_1.element(locators.LOC_PriceDropdown).click();
@@ -29,6 +23,12 @@ class search_result_actions {
                 options[optionNum].click();
             });
         }
+    }
+    selectBrand() {
+        return __awaiter(this, void 0, void 0, function* () {
+            yield protractor_1.element(locators.LOC_BrandCheckbox).click();
+            console.log("After Selecting Brand");
+        });
     }
     selectFirstProduct() {
         return __awaiter(this, void 0, void 0, function* () {

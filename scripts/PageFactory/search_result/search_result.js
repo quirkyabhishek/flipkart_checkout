@@ -17,20 +17,42 @@ class search_result {
         this.action = new search_result_actions_1.search_result_actions();
         this.check = new search_result_checks_1.search_result_checks();
     }
-    selectUserBrand() {
+    waitForProductToDisplay(timeout) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield this.action.selectBrand();
+            return yield wait_util_1.wait_util.waitForElementVisible(locators.LOC_FirstProduct, timeout);
+        });
+    }
+    waitForSearchTextToDisplay(timeout) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield wait_util_1.wait_util.waitForElementVisible(locators.LOC_SearchTestLabel, timeout);
+        });
+    }
+    waitForProductFilterToDisplay(timeout) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield wait_util_1.wait_util.waitForElementVisible(locators.LOC_BrandCheckbox, timeout);
+        });
+    }
+    waitForPriceFilterToDisplay(timeout) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield wait_util_1.wait_util.waitForElementVisible(locators.LOC_PriceDropdown, timeout);
+        });
+    }
+    waitForSelectedFiltersToDisplay(timeout) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield wait_util_1.wait_util.waitForElementVisible(locators.LOC_FilterText, timeout);
         });
     }
     applyFilter() {
         return __awaiter(this, void 0, void 0, function* () {
+            yield this.waitForPriceFilterToDisplay(3000);
             yield this.action.clickDropdown();
             yield this.action.selectDropdownbyNum(2);
         });
     }
-    waitForProductToDisplay(timeout) {
+    selectUserBrand() {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield wait_util_1.wait_util.waitForElementVisible(locators.LOC_FirstProduct, timeout);
+            yield this.waitForProductFilterToDisplay(3000);
+            yield this.action.selectBrand();
         });
     }
     selectProduct() {
@@ -41,12 +63,14 @@ class search_result {
     }
     verifyAppliedFilters() {
         return __awaiter(this, void 0, void 0, function* () {
+            yield this.waitForSelectedFiltersToDisplay(3000);
             const filters = yield this.check.getAppliedFilters();
             expect(filters).toEqual(['REEBOK', 'Min-₹1500'], "Applied Filters Didn't Match");
         });
     }
     verifySearchText() {
         return __awaiter(this, void 0, void 0, function* () {
+            yield this.waitForSearchTextToDisplay(3000);
             const searchText = yield this.check.getSearchTextName();
             expect(searchText).toEqual("shoes", "Searched item didn't match");
         });

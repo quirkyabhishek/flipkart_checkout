@@ -27,10 +27,11 @@ describe("Add To Cart", () => __awaiter(this, void 0, void 0, function* () {
         const enter = new home_page_1.home_page();
         yield enter.verifySearchBoxPlace();
         yield enter.enterSearchTextonHMPG();
+        yield enter.clickSubmitonSearch();
     }));
-    it("Press Enter Key", () => __awaiter(this, void 0, void 0, function* () {
-        yield protractor_1.browser.actions().sendKeys(protractor_1.protractor.Key.ENTER).perform();
-    }));
+    /*    it("Press Enter Key", async()=>{
+            await browser.actions().sendKeys(protractor.Key.RETURN).perform();
+        })*/
     it("Verify the searched item", () => __awaiter(this, void 0, void 0, function* () {
         const search = new search_result_1.search_result();
         yield search.verifySearchText();

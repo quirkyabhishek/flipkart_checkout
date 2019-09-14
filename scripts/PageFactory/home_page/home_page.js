@@ -26,6 +26,11 @@ class home_page {
             expect(placeholder).toEqual("Search for products, brands and more", "Search Box Missing");
         });
     }
+    clickSubmitonSearch() {
+        return __awaiter(this, void 0, void 0, function* () {
+            yield this.action.clickSubmitButton();
+        });
+    }
 }
 exports.home_page = home_page;
 //# sourceMappingURL=home_page.js.map
