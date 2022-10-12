@@ -2,7 +2,7 @@
   "name": "Flipkart",
   "version": "0.0.1",
   "dependencies": {
-    "jasmine-reporters": "^2.3.1",
+    "jasmine-reporters": "^2.5.0",
     "typescript": "^2.7.2",
     "protractor": "5.3.2"
   },
